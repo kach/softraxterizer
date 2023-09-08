@@ -90,7 +90,7 @@ def softras(mesh, pixel, C, SIGMA=1e-1, GAMMA=1e-1):
     bary_clipped = np.clip(bary, 0, 1)
     bary_clipped = bary_clipped / (bary_clipped.sum(axis=2, keepdims=True) + eps)
 
-    Zb = (bary_clipped * np.roll(Zbuf, 2, axis=1)).sum(axis=2)
+    Zb = (bary_clipped * np.roll(Zbuf, 1, axis=1)).sum(axis=2)
     Zb = (Zb.max() - Zb) / (Zb.max() - Zb.min())
 
     Zbe = np.exp(np.clip(Zb / GAMMA, -20., 20.))
